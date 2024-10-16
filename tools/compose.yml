@@ -1,0 +1,20 @@
+#!/usr/bin/env -S docker compose -f
+services:
+  panvimdoc:
+    platform: linux/amd64
+    image: panvimdoc:4.0.1
+    build:
+      context: https://github.com/kdheepak/panvimdoc.git#v4.0.1
+    volumes:
+      - ${PWD}/README.md:/workdir/README.md:ro
+      - ${PWD}/doc:/workdir/doc
+    working_dir: /workdir
+    command:
+      - --project-name
+      - tex-filetypes.nvim
+      - --description
+      - A Neovim filetype plugin for TeX-related files
+      - --shift-heading-level-by
+      - "-1"
+      - --input-file
+      - README.md
