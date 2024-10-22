@@ -2,6 +2,7 @@ local M = {}
 
 ---@param path string
 ---@return boolean
+---@nodiscard
 local function ignored(path)
   if type(vim.g.ft_ignore_pat) == "string" then
     return vim.regex(vim.g.ft_ignore_pat):match_str(path) and true or false
@@ -12,26 +13,27 @@ end
 ---@param bufnr integer
 ---@param opts? { start?: integer, limit?: integer }
 ---@return
----| fun(list: string[]): integer, string
----| fun(list: string[]): nil, nil
----@return string[]
+---| fun(): integer, string
+---| fun(): nil, nil
+---@nodiscard
 local function lines(bufnr, opts)
   opts = vim.tbl_extend("force", { start = 1, limit = 20 }, opts or {})
   local start = opts.start - 1
   local end_ = opts.limit < 0 and opts.limit or (start + opts.limit)
+  local list = vim.api.nvim_buf_get_lines(bufnr, start, end_, false)
   local index = 0
-  return function(list)
+  return function()
     index = index + 1
     local line = list[index]
     if line then
       return start + index, line
     end
-  end,
-    vim.api.nvim_buf_get_lines(bufnr, start, end_, false)
+  end
 end
 
 ---@overload fun(bufnr: integer, opts?: table): integer, string
 ---@overload fun(bufnr: integer, opts?: table): nil, nil
+---@nodiscard
 local function first_nonblank_line(bufnr, opts)
   for lnum, line in lines(bufnr, opts) do
     if not line:match("^%s*$") then
@@ -44,6 +46,7 @@ end
 ---@param patterns string | string[]
 ---@param opts? table
 ---@return boolean
+---@nodiscard
 local function first_lines_match(bufnr, patterns, opts)
   patterns = type(patterns) == "string" and { patterns } or patterns
   for _, line in lines(bufnr, opts) do
@@ -60,38 +63,43 @@ end
 
 ---@param path string
 ---@return boolean
+---@nodiscard
 local function under_texmf_tree(path)
   return path:match("/texmf[/-]")
 end
 
 ---@type vim.filetype.mapfn
-function M.cfg()
-  return vim.g.filetype_cfg or "tex"
+---@nodiscard
+function M.cfg(path)
+  return vim.g.filetype_cfg or (under_texmf_tree(path) and "tex" or nil)
 end
 
 ---@type vim.filetype.mapfn
-function M.def()
-  return vim.g.filetype_def or "tex"
+---@nodiscard
+function M.def(path)
+  return vim.g.filetype_def or (under_texmf_tree(path) and "tex" or nil)
 end
 
 ---@type vim.filetype.mapfn
+---@nodiscard
 function M.ini(path, bufnr)
-  if not ignored(path) then
+  if ignored(path) then
+    if not under_texmf_tree(path) then
+      return
+    end
+  else
     local lnum = first_nonblank_line(bufnr)
     if lnum then
-      if first_lines_match(bufnr, "^%s*[%%\\]", { start = lnum }) then
-        return "tex"
-      else
+      if not first_lines_match(bufnr, "^%s*[%%\\]", { start = lnum }) then
         return
       end
     end
   end
-  if under_texmf_tree(path) then
-    return "tex"
-  end
+  return "tex"
 end
 
 ---@type vim.filetype.mapfn
+---@nodiscard
 function M.pl(path, bufnr)
   if vim.g.filetype_pl then
     return vim.g.filetype_pl
@@ -125,16 +133,22 @@ local PROFILE_LINE_PATTERNS = vim
   :totable()
 
 ---@type vim.filetype.mapfn
+---@nodiscard
 function M.profile(path, bufnr)
-  if not ignored(path) then
+  if ignored(path) then
+    if not under_texmf_tree(path) then
+      return
+    end
+  else
     local lnum, line = first_nonblank_line(bufnr)
     if
-      (lnum == 1 and line and line:find("texlive%.profile") ~= nil)
-      or first_lines_match(bufnr, PROFILE_LINE_PATTERNS, { start = lnum })
+      not (lnum == 1 and line and line:find("texlive%.profile"))
+      and not first_lines_match(bufnr, PROFILE_LINE_PATTERNS, { start = lnum })
     then
-      return "texliveprofile"
+      return
     end
   end
+  return "texliveprofile"
 end
 
 return M

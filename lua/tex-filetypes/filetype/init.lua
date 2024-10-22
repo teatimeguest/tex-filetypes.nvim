@@ -5,8 +5,8 @@ local M = {}
 
 M._ = {
   pattern = {
-    [".-/texmf.-%.def"] = { detect.def, { priority = -50 } },
-    [".-/texmf.-%.cfg"] = { detect.cfg, { priority = -50 } },
+    [".-%.def"] = { detect.def, { priority = 10 } },
+    [".-%.cfg"] = { detect.cfg, { priority = 10 } },
   },
 }
 
@@ -22,7 +22,7 @@ M.babel = {
 M.babelbib = {
   pattern = {
     -- `.bdf` is also used by `bdf`.
-    [".-/texlive[/-].-%.bdf"] = { "tex", { priority = -10 } },
+    [".-/texmf[/-].-%.bdf"] = "tex",
   },
 }
 
@@ -72,7 +72,7 @@ M.bibtool = {
   },
   pattern = {
     -- `.rsc` is also used by `routeros`.
-    [".-/texmf[/-].-%.rsc"] = { "bibtoolrsc", { priority = -10 } },
+    [".-/texmf[/-].-%.rsc"] = "bibtoolrsc",
   },
 }
 
@@ -199,7 +199,7 @@ M.siunitx = {
 M["tex-ini-files"] = {
   pattern = {
     -- `.ini` is also used by `ini`.
-    [".-%.ini"] = { detect.ini, { priority = -10 } },
+    [".-%.ini"] = detect.ini,
   },
 }
 
@@ -218,7 +218,7 @@ M.texlive = {
   pattern = {
     [".-%.DEPENDS%.txt"] = "dependstxt",
     -- `.profile` is also used by `sh`.
-    [".-%.profile"] = { detect.profile, { priority = -10 } },
+    [".-%.profile"] = { detect.profile, { priority = 10 } },
   },
 }
 
