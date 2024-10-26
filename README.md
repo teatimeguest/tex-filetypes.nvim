@@ -8,8 +8,8 @@
 
 ## Features
 
-- Improved detection of existing filetypes, especially `tex`.
-- Additional support for several TeX-related file formats.
+- Improved support for existing filetypes, especially `tex`.
+- Additional filetypes for several TeX-related file formats.
 
 ## Installation
 
@@ -31,7 +31,7 @@ add("teatimeguest/tex-filetypes.nvim")
 
 ## Filetypes
 
-Provides support for the following filetypes:
+Provides support for the following file formats:
 
 <!-- panvimdoc-ignore-start -->
 <table>

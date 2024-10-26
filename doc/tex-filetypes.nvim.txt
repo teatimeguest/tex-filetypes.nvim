@@ -19,8 +19,8 @@ Table of Contents                       *tex-filetypes.nvim-table-of-contents*
 ==============================================================================
 1. Features                                      *tex-filetypes.nvim-features*
 
-- Improved detection of existing filetypes, especially `tex`.
-- Additional support for several TeX-related file formats.
+- Improved support for existing filetypes, especially `tex`.
+- Additional filetypes for several TeX-related file formats.
 
 
 ==============================================================================
@@ -48,7 +48,7 @@ WITH MINI.DEPS                *tex-filetypes.nvim-installation-with-mini.deps*
 ==============================================================================
 3. Filetypes                                    *tex-filetypes.nvim-filetypes*
 
-Provides support for the following filetypes:
+Provides support for the following file formats:
 
 
 BIBTOOLRSC                           *tex-filetypes.nvim-filetypes-bibtoolrsc*
