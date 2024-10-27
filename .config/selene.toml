@@ -1,0 +1,2 @@
+std = "selene/nvim+selene/busted"
+exclude = [".luarocks/**"]

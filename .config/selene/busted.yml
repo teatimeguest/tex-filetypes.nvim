@@ -1,0 +1,11 @@
+---
+base: lua51
+globals:
+  after_each: { any: true }
+  assert.*: { any: true }
+  before_each: { any: true }
+  describe: { any: true }
+  finally: { any: true }
+  setup: { any: true }
+  teardown: { any: true }
+  it: { any: true }
