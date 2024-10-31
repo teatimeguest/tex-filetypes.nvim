@@ -1,5 +1,6 @@
-local I = require("tex-filetypes.include")
-local Iterator = require("tex-filetypes.util").Iterator
+local include = require("tex-filetypes.include")
+local iter = require("tex-filetypes.util.iter")
+local kpse = require("tex-filetypes.util.kpse")
 
 local M = {}
 
@@ -21,29 +22,29 @@ M.include = [[\\\%(]]
 
 local RE = vim.regex(M.include)
 
----@param name string
+---@param basename string
 ---@param config tex_filetypes.include.tex.Config
 ---@return string[]
 ---@nodiscard
-local function get_patterns(name, config)
+local function get_filenames(basename, config)
   if type(config.pattern) == "function" then
-    return config.pattern(name)
+    return config.pattern(basename)
   elseif config.pattern then
     return vim
       .iter(config.pattern)
       :map(function(pat)
-        return pat:format(name)
+        return pat:format(basename)
       end)
       :totable()
   elseif config.suffixes then
     return vim
       .iter(config.suffixes)
       :map(function(suffix)
-        return name .. suffix
+        return basename .. suffix
       end)
       :totable()
   end
-  return { name }
+  return { basename }
 end
 
 ---@param name string
@@ -52,30 +53,30 @@ end
 ---@nodiscard
 function M.resolve(name, options)
   if #name == 0 then
-    return Iterator.empty()
+    return iter.empty()
   end
   options = vim.tbl_extend("force", {
-    max_lines = I.DEFAULT_MAX_LINES,
-    timeout_ms = I.DEFAULT_TIMEOUT_MS,
+    max_lines = include.DEFAULT_MAX_LINES,
+    timeout_ms = include.DEFAULT_TIMEOUT_MS,
   }, options or {})
   local winnr = 0
   local cursor = vim.api.nvim_win_get_cursor(winnr)
-  local command = I.get_include_directive(RE, cursor, options.max_lines)
+  local command = include.get_include_directive(RE, cursor, options.max_lines)
   if not command then
-    return Iterator.empty()
+    return iter.empty()
   end
   local config = COMMANDS[command:sub(2)] --[[ Trim `\` ]]
   ---@type string[]
-  local patterns = {}
+  local filenames = {}
   if config.list then
-    local item = I.get_item_under_cursor(name, cursor)
+    local item = include.get_item_under_cursor(name, cursor)
     if item then
-      patterns = get_patterns(item, config)
+      filenames = get_filenames(item, config)
     end
   end
-  vim.list_extend(patterns, get_patterns(name, config))
-  return I.kpsewhich(
-    patterns,
+  vim.list_extend(filenames, get_filenames(name, config))
+  return kpse.lookup(
+    filenames,
     vim.tbl_extend("keep", {
       format = config.format,
       progname = config.progname,

@@ -36,7 +36,7 @@ WITH LAZY.NVIM                *tex-filetypes.nvim-installation-with-lazy.nvim*
     {
       "teatimeguest/tex-filetypes.nvim",
       config = true,
-      event = { 'BufReadPre', 'BufNewFile' },
+      event = { "BufReadPre", "BufNewFile" },
     }
 <
 

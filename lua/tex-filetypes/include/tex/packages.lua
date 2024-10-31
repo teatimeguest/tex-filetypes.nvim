@@ -1,6 +1,6 @@
 local M = {}
 
----@class tex_filetypes.include.tex.Config: tex_filetypes.kpsewhich.Options
+---@class tex_filetypes.include.tex.Config: tex_filetypes.util.kpse.LookupOptions
 ---@field suffixes? string[]
 ---@field pattern? string[] | fun(name: string): string[]
 ---@field list? true

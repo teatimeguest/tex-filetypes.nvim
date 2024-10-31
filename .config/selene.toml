@@ -1,2 +1,5 @@
 std = "selene/nvim+selene/busted"
-exclude = [".luarocks/**"]
+exclude = [
+  ".luarocks/**",
+  "__fixtures__/**",
+]

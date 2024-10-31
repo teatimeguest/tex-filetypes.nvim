@@ -1,10 +1,13 @@
-export PATH := (justfile_dir() / '.luarocks' / 'bin') + ':' + env('PATH')
+export PATH := x'${PWD}/.luarocks/bin:${PATH}'
 
 unexport LUAROCKS_CONFIG
 
 [private]
 @default:
     just --list
+
+# Show diagnostic report using LuaLS
+check: llscheck
 
 # Generate Vim help file from README.md
 doc: (compose 'run' '--rm' 'panvimdoc')
@@ -23,6 +26,7 @@ install:
       hererocks -j2.1 -rlatest .luarocks
     echo '*' >| .luarocks/.gitignore
     luarocks install busted
+    luarocks install llscheck
     luarocks install nlua
 
 # Run linters
@@ -37,6 +41,10 @@ test:
 [private]
 dprint subcommand *args:
     dprint --config .config/dprint/dprint.jsonc {{ subcommand }} {{ args }}
+
+[private]
+llscheck $VIMRUNTIME=`nvim --clean --noplugin -es '+pu=$VIMRUNTIME|pr|q!'`:
+    llscheck --checklevel Hint --configpath .config/luarc.json
 
 panvimdoc_version := '4.0.1'
 

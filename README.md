@@ -19,7 +19,7 @@
 {
   "teatimeguest/tex-filetypes.nvim",
   config = true,
-  event = { 'BufReadPre', 'BufNewFile' },
+  event = { "BufReadPre", "BufNewFile" },
 }
 ```
 

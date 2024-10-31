@@ -7,5 +7,6 @@ globals:
   describe: { any: true }
   finally: { any: true }
   setup: { any: true }
+  randomize: { any: true }
   teardown: { any: true }
   it: { any: true }

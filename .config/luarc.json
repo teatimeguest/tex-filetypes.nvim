@@ -1,0 +1,18 @@
+{
+  "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/v3.12.0/setting/schema.json",
+  "runtime": {
+    "pathStrict": true,
+    "version": "LuaJIT"
+  },
+  "workspace": {
+    "checkThirdParty": "Disable",
+    "ignoreDir": [
+      "/.luarocks"
+    ],
+    "library": [
+      "${env:VIMRUNTIME}",
+      "${3rd}/busted/library",
+      "${3rd}/luassert/library"
+    ]
+  }
+}

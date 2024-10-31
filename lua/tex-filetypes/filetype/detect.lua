@@ -1,3 +1,6 @@
+local pattern = require("tex-filetypes.util.pattern")
+local regex = require("tex-filetypes.util.regex")
+
 local M = {}
 
 ---@param path string
@@ -5,7 +8,7 @@ local M = {}
 ---@nodiscard
 local function ignored(path)
   if type(vim.g.ft_ignore_pat) == "string" then
-    return vim.regex(vim.g.ft_ignore_pat):match_str(path) and true or false
+    return regex.new(vim.g.ft_ignore_pat):match_str(path) and true or false
   end
   return false
 end
@@ -48,13 +51,10 @@ end
 ---@return boolean
 ---@nodiscard
 local function first_lines_match(bufnr, patterns, opts)
+  ---@cast patterns -string
   patterns = type(patterns) == "string" and { patterns } or patterns
   for _, line in lines(bufnr, opts) do
-    if
-      vim.iter(patterns):all(function(pattern)
-        return not line:match(pattern)
-      end)
-    then
+    if not pattern.find(line, patterns) then
       return false
     end
   end
@@ -89,10 +89,10 @@ function M.ini(path, bufnr)
     end
   else
     local lnum = first_nonblank_line(bufnr)
-    if lnum then
-      if not first_lines_match(bufnr, "^%s*[%%\\]", { start = lnum }) then
-        return
-      end
+    if
+      lnum and not first_lines_match(bufnr, "^%s*[%%\\]", { start = lnum })
+    then
+      return
     end
   end
   return "tex"
@@ -149,46 +149,6 @@ function M.profile(path, bufnr)
     end
   end
   return "texliveprofile"
-end
-
----@class tex_filetypes.filetype.detect.is_texlua.Options
----@field max_lines? integer [default: 200]
-
----@param target vim.filetype.match.args
----@param options? tex_filetypes.filetype.detect.is_texlua.Options
----@return boolean
----@nodiscard
-function M.is_texlua(target, options)
-  local bufnr = (target.buf and vim.api.nvim_buf_is_valid(target.buf) or nil)
-    and target.buf
-  local filename = target.filename
-    or (bufnr and vim.api.nvim_buf_get_name(bufnr))
-  if
-    filename
-    and (
-      vim.endswith(filename, ".luatex")
-      or vim.endswith(filename, ".texlua")
-      or vim.endswith(filename, ".tlu")
-    )
-  then
-    return true
-  end
-  local max_lines = options and options.max_lines or 200
-  local contents = target.contents
-    or (bufnr and vim.api.nvim_buf_get_lines(bufnr, 0, max_lines, false))
-  local pattern = vim.regex([[\<\%(tex\%(io\|config\)\|kpse\|luaharfbuzz\)\.]])
-  for row, line in ipairs(contents or {}) do
-    if
-      row == 1
-      and vim.regex([[^#!.\{-}\<\%(texlua\|luatex\)\>]]):match_str(line)
-    then
-      return true
-    end
-    if pattern:match_str(line) then
-      return true
-    end
-  end
-  return false
 end
 
 return M

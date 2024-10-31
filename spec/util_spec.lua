@@ -1,6 +1,7 @@
+local pattern = require("tex-filetypes.util.pattern")
+local regex = require("tex-filetypes.util.regex")
 local util = require("tex-filetypes.util")
 
----@type integer
 local lipsum = vim.api.nvim_create_buf(false, true)
 
 setup(function()
@@ -21,9 +22,9 @@ teardown(function()
   end
 end)
 
-describe("find_all", function()
+describe("pattern.find_all_substrings", function()
   it("yields all substrings", function()
-    local matches = util.find_all("aaaaa", "aa")
+    local matches = pattern.find_all_substrings("aaaaa", "aa")
     assert.same(matches(), { 0, 2 })
     assert.same(matches(), { 1, 3 })
     assert.same(matches(), { 2, 4 })
@@ -41,7 +42,7 @@ describe("regex.gmatch_line", function()
       end
     end)
     vim.api.nvim_buf_set_lines(bufnr, 0, 1, false, { "aaaaa" })
-    local matches = util.regex.gmatch_line(vim.regex("aa"), bufnr, 0)
+    local matches = regex.gmatch_line(vim.regex("aa"), bufnr, 0)
     assert.same(matches(), { 0, 2 })
     assert.same(matches(), { 2, 4 })
     assert.is_nil(matches())
@@ -49,7 +50,7 @@ describe("regex.gmatch_line", function()
 
   it("starts search from the given offset", function()
     local re = vim.regex([[\<s[aeiou]n\?]])
-    local matches = util.regex.gmatch_line(re, lipsum, 0, 30)
+    local matches = regex.gmatch_line(re, lipsum, 0, 30)
     assert.same(matches(), { 57, 59 })
     assert.is_nil(matches())
   end)

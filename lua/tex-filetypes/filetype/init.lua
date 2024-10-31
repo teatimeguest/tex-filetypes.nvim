@@ -1,6 +1,7 @@
 local M = {}
 
 M.detect = require("tex-filetypes.filetype.detect")
+M.dialect = require("tex-filetypes.filetype.dialect")
 
 M.filetypes = vim.iter(require("tex-filetypes.filetype.packages")):fold(
   {} --[[@as vim.filetype.add.filetypes]],

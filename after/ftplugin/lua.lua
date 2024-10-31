@@ -1,4 +1,4 @@
-if not vim.b.did_ftplugin or vim.b.is_texlua then
+if not vim.b.did_ftplugin or vim.b.is_texlua ~= nil then
   return
 end
 
