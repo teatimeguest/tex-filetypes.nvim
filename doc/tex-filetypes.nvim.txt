@@ -7,14 +7,17 @@ Table of Contents                       *tex-filetypes.nvim-table-of-contents*
 2. Installation                              |tex-filetypes.nvim-installation|
   - With lazy.nvim            |tex-filetypes.nvim-installation-with-lazy.nvim|
   - With mini.deps            |tex-filetypes.nvim-installation-with-mini.deps|
-3. Filetypes                                    |tex-filetypes.nvim-filetypes|
-  - bibtoolrsc                       |tex-filetypes.nvim-filetypes-bibtoolrsc|
-  - chktexrc                           |tex-filetypes.nvim-filetypes-chktexrc|
-  - dependstxt                       |tex-filetypes.nvim-filetypes-dependstxt|
-  - propertylist                   |tex-filetypes.nvim-filetypes-propertylist|
-  - texliveprofile               |tex-filetypes.nvim-filetypes-texliveprofile|
-4. Configuration                            |tex-filetypes.nvim-configuration|
-5. License                                        |tex-filetypes.nvim-license|
+3. Filetype Plugins                      |tex-filetypes.nvim-filetype-plugins|
+  - tex                              |tex-filetypes.nvim-filetype-plugins-tex|
+  - lua                              |tex-filetypes.nvim-filetype-plugins-lua|
+4. Extra Filetypes                        |tex-filetypes.nvim-extra-filetypes|
+  - bibtoolrsc                 |tex-filetypes.nvim-extra-filetypes-bibtoolrsc|
+  - chktexrc                     |tex-filetypes.nvim-extra-filetypes-chktexrc|
+  - dependstxt                 |tex-filetypes.nvim-extra-filetypes-dependstxt|
+  - propertylist             |tex-filetypes.nvim-extra-filetypes-propertylist|
+  - texliveprofile         |tex-filetypes.nvim-extra-filetypes-texliveprofile|
+5. Configuration                            |tex-filetypes.nvim-configuration|
+6. License                                        |tex-filetypes.nvim-license|
 
 ==============================================================================
 1. Features                                      *tex-filetypes.nvim-features*
@@ -46,12 +49,30 @@ WITH MINI.DEPS                *tex-filetypes.nvim-installation-with-mini.deps*
 
 
 ==============================================================================
-3. Filetypes                                    *tex-filetypes.nvim-filetypes*
-
-Provides support for the following file formats:
+3. Filetype Plugins                      *tex-filetypes.nvim-filetype-plugins*
 
 
-BIBTOOLRSC                           *tex-filetypes.nvim-filetypes-bibtoolrsc*
+TEX                                  *tex-filetypes.nvim-filetype-plugins-tex*
+
+Improved versions of `include` and `includeexpr` are provided.
+
+
+LUA                                  *tex-filetypes.nvim-filetype-plugins-lua*
+
+                                              *tex-filetypes.nvim-b:is_texlua*
+
+The plugin sets `b:is_texlua` to `v:true` if the file is considered to be for
+`texlua`. This can be used to change the behavior only for tex-related lua
+files.
+
+
+==============================================================================
+4. Extra Filetypes                        *tex-filetypes.nvim-extra-filetypes*
+
+The plugin provides support for the following file formats:
+
+
+BIBTOOLRSC                     *tex-filetypes.nvim-extra-filetypes-bibtoolrsc*
 
   Language        BibTool <https://ctan.org/pkg/bibtool> resource file
 
@@ -60,7 +81,7 @@ BIBTOOLRSC                           *tex-filetypes.nvim-filetypes-bibtoolrsc*
   Features        ✅ Syntax  ✅ Indent  ➖ Folding  ✅ Commenting
 
 
-CHKTEXRC                               *tex-filetypes.nvim-filetypes-chktexrc*
+CHKTEXRC                         *tex-filetypes.nvim-extra-filetypes-chktexrc*
 
   Language         ChkTeX <https://ctan.org/pkg/chktex> config file
 
@@ -69,7 +90,7 @@ CHKTEXRC                               *tex-filetypes.nvim-filetypes-chktexrc*
   Features         ✅ Syntax  ➖ Indent  ✅ Folding  ✅ Commenting
 
 
-DEPENDSTXT                           *tex-filetypes.nvim-filetypes-dependstxt*
+DEPENDSTXT                     *tex-filetypes.nvim-extra-filetypes-dependstxt*
 
   Language        TeX Live’s DEPENDS.txt format
                   <https://tug.org/texlive/pkgcontrib.html#deps>
@@ -77,7 +98,7 @@ DEPENDSTXT                           *tex-filetypes.nvim-filetypes-dependstxt*
   Features        ✅ Syntax  ➖ Indent  ✅ Folding  ✅ Commenting
 
 
-PROPERTYLIST                       *tex-filetypes.nvim-filetypes-propertylist*
+PROPERTYLIST                 *tex-filetypes.nvim-extra-filetypes-propertylist*
 
   Language        Property list of TeX font metric data
 
@@ -91,7 +112,7 @@ PROPERTYLIST                       *tex-filetypes.nvim-filetypes-propertylist*
   Features        ✅ Syntax  ✅ Indent  ✅ Folding  ✅ Commenting
 
 
-TEXLIVEPROFILE                   *tex-filetypes.nvim-filetypes-texliveprofile*
+TEXLIVEPROFILE             *tex-filetypes.nvim-extra-filetypes-texliveprofile*
 
   Language        TeX Live installation profile
                   <https://www.tug.org/texlive/doc/install-tl.html#PROFILES>
@@ -102,7 +123,7 @@ TEXLIVEPROFILE                   *tex-filetypes.nvim-filetypes-texliveprofile*
 
 
 ==============================================================================
-4. Configuration                            *tex-filetypes.nvim-configuration*
+5. Configuration                            *tex-filetypes.nvim-configuration*
 
 The plugin respects the |filetype-overrule| and |filetype-ignore| global
 config. In particular, the following variables affect filetype detection:
@@ -114,7 +135,7 @@ config. In particular, the following variables affect filetype detection:
 
 
 ==============================================================================
-5. License                                        *tex-filetypes.nvim-license*
+6. License                                        *tex-filetypes.nvim-license*
 
 MIT License
 <https://github.com/teatimeguest/tex-filetypes.nvim/blob/main/LICENSE>

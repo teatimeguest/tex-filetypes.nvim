@@ -29,9 +29,25 @@
 add("teatimeguest/tex-filetypes.nvim")
 ```
 
-## Filetypes
+## Filetype Plugins
 
-Provides support for the following file formats:
+### `tex`
+
+Improved versions of `include` and `includeexpr` are provided.
+
+### `lua`
+
+<!-- panvimdoc-include-comment ```vimdoc
+                                              *tex-filetypes.nvim-b:is_texlua*
+``` -->
+
+The plugin sets `b:is_texlua` to `v:true`
+if the file is considered to be for `texlua`.
+This can be used to change the behavior only for tex-related lua files.
+
+## Extra Filetypes
+
+The plugin provides support for the following file formats:
 
 <!-- panvimdoc-ignore-start -->
 <table>

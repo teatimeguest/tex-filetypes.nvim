@@ -51,15 +51,21 @@ compose +args:
         build:
           context: >-
             https://github.com/kdheepak/panvimdoc.git#{{ panvimdoc_version }}
+        network_mode: none
+        read_only: true
         volumes:
           - ${PWD}/README.md:/workdir/README.md:ro
           - ${PWD}/doc:/workdir/doc
         working_dir: /workdir
         command:
           - --project-name
-          - tex-filetypes.nvim
+          - >-
+            {{ `sed -n 's/^# //;T;p;q' README.md` }}
           - --description
-          - A Neovim filetype plugin for TeX-related files
+          - >-
+            {{ `sed -n 's/^> //;T;p;q' README.md` }}
+          - --doc-mapping
+          - "true"
           - --shift-heading-level-by
           - "-1"
           - --input-file

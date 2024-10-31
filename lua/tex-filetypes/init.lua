@@ -1,9 +1,7 @@
 local M = {}
 
 function M.setup()
-  for _, config in pairs(require("tex-filetypes.filetype")) do
-    vim.filetype.add(config)
-  end
+  vim.filetype.add(require("tex-filetypes.filetype").filetypes)
 end
 
 return M
