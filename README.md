@@ -29,11 +29,11 @@
 add("teatimeguest/tex-filetypes.nvim")
 ```
 
-## Filetype Plugins
+## Improvements
 
 ### `tex`
 
-Improved versions of `include` and `includeexpr` are provided.
+- Improved versions of `include` and `includeexpr` are provided.
 
 ### `lua`
 
@@ -41,61 +41,13 @@ Improved versions of `include` and `includeexpr` are provided.
                                               *tex-filetypes.nvim-b:is_texlua*
 ``` -->
 
-The plugin sets `b:is_texlua` to `v:true`
-if the file is considered to be for `texlua`.
-This can be used to change the behavior only for tex-related lua files.
+- The plugin sets `b:is_texlua` to `v:true`
+  if the file is considered to be for `texlua`.
+  This can be used to change the behavior only for tex-related lua files.
 
 ## Extra Filetypes
 
 The plugin provides support for the following file formats:
-
-<!-- panvimdoc-ignore-start -->
-<table>
-  <thead>
-    <tr>
-      <th rowspan="2">Filetype</th>
-      <th rowspan="2">Language</th>
-      <th colspan="4">Supported Features</th>
-    </tr>
-    <tr>
-      <th>
-        <sup>
-          <a href="https://neovim.io/doc/user/syntax.html#syntax">
-            Syntax
-          </a>
-        </sup>
-      </th>
-      <th>
-        <sup>
-          <a href="https://neovim.io/doc/user/indent.html#indent.txt">
-            Indent
-          </a>
-        </sup>
-      </th>
-      <th>
-        <sup>
-          <a href="https://neovim.io/doc/user/fold.html#folding">
-            Folding
-          </a>
-        </sup>
-      </th>
-      <th>
-        <sup>
-          <a href="https://neovim.io/doc/user/various.html#_3.-commenting">
-            Commenting
-          </a>
-        </sup>
-      </th>
-    </tr>
-  </thead>
-  <tbody align="center">
-    <tr>
-      <td align="left"><code>bibtoolrsc</code></td>
-      <td align="left">
-
-[BibTool](https://ctan.org/pkg/bibtool) resource file
-
-**Version:**&ensp;`2.68`
 
 <!-- panvimdoc-include-comment
 
@@ -106,44 +58,18 @@ The plugin provides support for the following file formats:
 
   Version         `2.68`
 
-  Features        ✅ Syntax  ✅ Indent  ➖ Folding  ✅ Commenting
+  Features        ✅ Syntax  ✅ Indent  ➖ Folding  ✅ Commenting  ➖ Include
 ```
-
--->
-</td>
-      <td>✅</td><td>✅</td><td>➖</td><td>✅</td>
-    </tr>
-    <tr>
-      <td align="left"><code>chktexrc</code></td>
-      <td align="left">
-
-[ChkTeX](https://ctan.org/pkg/chktex) config file
-
-**Version**&ensp;`1.7.9`
-
-<!-- panvimdoc-include-comment
 
 ## chktexrc
 
 ```vimdoc
-  Language         ChkTeX <https://ctan.org/pkg/chktex> config file
+  Language        ChkTeX <https://ctan.org/pkg/chktex> config file
 
-  Version          `1.7.9`
+  Version         `1.7.9`
 
-  Features         ✅ Syntax  ➖ Indent  ✅ Folding  ✅ Commenting
+  Features        ✅ Syntax  ➖ Indent  ✅ Folding  ✅ Commenting  ➖ Include
 ```
-
--->
-</td>
-      <td>✅</td><td>➖</td><td>✅</td><td>✅</td>
-    </tr>
-    <tr>
-      <td align="left"><code>dependstxt</code></td>
-      <td align="left">
-
-TeX Live's [`DEPENDS.txt`](https://tug.org/texlive/pkgcontrib.html#deps) format
-
-<!-- panvimdoc-include-comment
 
 ## dependstxt
 
@@ -151,30 +77,17 @@ TeX Live's [`DEPENDS.txt`](https://tug.org/texlive/pkgcontrib.html#deps) format
   Language        TeX Live’s DEPENDS.txt format
                   <https://tug.org/texlive/pkgcontrib.html#deps>
 
-  Features        ✅ Syntax  ➖ Indent  ✅ Folding  ✅ Commenting
+  Features        ✅ Syntax  ➖ Indent  ✅ Folding  ✅ Commenting  ➖ Include
 ```
 
--->
-</td>
-      <td>✅</td><td>➖</td><td>✅</td><td>✅</td>
-    </tr>
-    <tr>
-      <td align="left"><code>propertylist</code></td>
-      <td align="left">
+## fontmap
 
-Property list of TeX font metric data
+```vimdoc
+  Language        TeX fontmap file
+                  <https://tug.org/fontname/html/Name-mapping-file.html>
 
-<div><strong>Version:</strong></div>
-
-- [PLtoTF] `3.6`
-- [VPtoVF] `1.6`
-- [pPLtoTF] `p230917`
-
-[PLtoTF]: https://mirrors.ctan.org/info/knuth-pdf/texware/pltotf.pdf
-[VPtoVF]: https://mirrors.ctan.org/info/knuth-pdf/etc/vptovf.pdf
-[pPLtoTF]: https://mirrors.ctan.org/info/ptex-manual/jfm.pdf
-
-<!-- panvimdoc-include-comment
+  Features        ✅ Syntax  ➖ Indent  ➖ Folding  ✅ Commenting  ✅ Include
+```
 
 ## propertylist
 
@@ -188,23 +101,8 @@ Property list of TeX font metric data
                   - pPLtoTF `p230917`
                     <https://mirrors.ctan.org/info/ptex-manual/jfm.pdf>
 
-  Features        ✅ Syntax  ✅ Indent  ✅ Folding  ✅ Commenting
+  Features        ✅ Syntax  ✅ Indent  ✅ Folding  ✅ Commenting  ➖ Include
 ```
-
--->
-</td>
-      <td>✅</td><td>✅</td><td>✅</td><td>✅</td>
-    </tr>
-    <tr>
-      <td align="left"><code>texliveprofile</code></td>
-      <td align="left">
-
-TeX Live
-[installation profile](https://www.tug.org/texlive/doc/install-tl.html#PROFILES)
-
-**Version:**&ensp;`2024`
-
-<!-- panvimdoc-include-comment
 
 ## texliveprofile
 
@@ -214,15 +112,33 @@ TeX Live
 
   Version         `2024`
 
-  Features        ✅ Syntax  ➖ Indent  ➖ Folding  ✅ Commenting
+  Features        ✅ Syntax  ➖ Indent  ➖ Folding  ✅ Commenting  ➖ Include
 ```
 
 -->
-</td>
-      <td>✅</td><td>➖</td><td>➖</td><td>✅</td>
-    </tr>
-  </tbody>
-</table>
+<!-- panvimdoc-ignore-start -->
+
+| Filetype         | Language                                | <sup>[Syntax]<sup> | <sup>[Indent]<sup> | <sup>[Folding]<sup> | <sup>[Commenting]<sup> | <sup>[Include]<sup> |
+| ---------------- | --------------------------------------- | :----------------: | :----------------: | :-----------------: | :--------------------: | :-----------------: |
+| `bibtoolrsc`     | [BibTool] resource file                 |         ✅         |         ✅         |         ➖          |           ✅           |         ➖          |
+| `chktexrc`       | [ChkTeX] config file                    |         ✅         |         ➖         |         ✅          |           ✅           |         ➖          |
+| `dependstxt`     | TeX Live's [`DEPENDS.txt`] format       |         ✅         |         ➖         |         ✅          |           ✅           |         ➖          |
+| `fontmap`        | TeX [fontmap file]                      |         ✅         |         ➖         |         ➖          |           ✅           |         ✅          |
+| `propertylist`   | [Property list] of TeX font metric data |         ✅         |         ✅         |         ✅          |           ✅           |         ➖          |
+| `texliveprofile` | TeX Live [installation profile]         |         ✅         |         ➖         |         ➖          |           ✅           |         ➖          |
+
+[BibTool]: https://ctan.org/pkg/bibtool
+[ChkTeX]: https://ctan.org/pkg/chktex
+[`DEPENDS.txt`]: https://tug.org/texlive/pkgcontrib.html#deps
+[fontmap file]: https://tug.org/fontname/html/Name-mapping-file.html
+[installation profile]: https://www.tug.org/texlive/doc/install-tl.html#PROFILES
+[Property list]: https://mirrors.ctan.org/info/knuth-pdf/texware/pltotf.pdf
+[Syntax]: https://neovim.io/doc/user/syntax.html#syntax
+[Indent]: https://neovim.io/doc/user/indent.html#indent.txt
+[Folding]: https://neovim.io/doc/user/fold.html#folding
+[Commenting]: https://neovim.io/doc/user/various.html#_3.-commenting
+[Include]: https://neovim.io/doc/user/options.html#'includeexpr'
+
 <!-- panvimdoc-ignore-end -->
 
 ## Configuration

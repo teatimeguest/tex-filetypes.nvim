@@ -1,3 +1,4 @@
+local kpse = require("tex-filetypes.util.kpse")
 local pattern = require("tex-filetypes.util.pattern")
 local util = require("tex-filetypes.util")
 
@@ -70,6 +71,20 @@ function M.get_item_under_cursor(fname, cursor)
       return
     end
   end
+end
+
+---Default `includeexpr`, using `kpsewhich`.
+---@param fname string
+---@param options? tex_filetypes.includeexpr.Options
+---@return string?
+---@nodiscard
+function M.includeexpr(fname, options)
+  options = vim.tbl_extend(
+    "force",
+    { timeout_ms = M.DEFAULT_TIMEOUT_MS },
+    options or {}
+  )
+  return kpse.lookup({ fname }, options)()
 end
 
 return M

@@ -26,7 +26,7 @@ end
 ---@param pattern string[]
 ---@param options? tex_filetypes.util.pattern.find_any.Options
 ---@return Range2?
----@return string ... captures
+---@return string? ... captures
 ---@nodiscard
 function M.find(input, pattern, options)
   local offset = options and options.offset or 0
@@ -34,7 +34,7 @@ function M.find(input, pattern, options)
   for _, pat in ipairs(pattern) do
     local match = { input:find(pat, offset + 1, plain) }
     if match[1] then
-      return { match[1], match[2] }, unpack(match, 3)
+      return { match[1], match[2] }, unpack(match --[[@as string[] ]], 3)
     end
   end
 end

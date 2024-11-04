@@ -104,6 +104,12 @@ M.docstrip = {
   },
 }
 
+M.dvips = {
+  filename = {
+    ["psfonts.map"] = "fontmap",
+  },
+}
+
 M.fontinst = {
   extension = {
     etx = "tex",
@@ -185,6 +191,12 @@ M.microtype = {
   },
 }
 
+M.pdftex = {
+  filename = {
+    ["pdftex.map"] = "fontmap",
+  },
+}
+
 M.pgf = {
   filename = {
     ["pgf.cfg"] = detect.cfg,
@@ -236,6 +248,15 @@ M.texware = {
   pattern = {
     -- `.pl` is also used by `perl` and `prolog`.
     [".-%.pl"] = { detect.pl, { priority = 10 } },
+  },
+}
+
+M.web2c = {
+  filename = {
+    ["texfonts.map"] = "fontmap",
+  },
+  extension = {
+    map = detect.map,
   },
 }
 

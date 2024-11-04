@@ -98,6 +98,27 @@ function M.ini(path, bufnr)
   return "tex"
 end
 
+---`.map` seems to be also used for "UMN mapserver config file"
+---@type vim.filetype.mapfn
+---@nodiscard
+function M.map(path, bufnr)
+  if
+    not under_texmf_tree(path)
+    and not path:find("fonts")
+    and not ignored(path)
+  then
+    local start = first_nonblank_line(bufnr)
+    if start then
+      for _, line in lines(bufnr, { start = start, limit = 20 }) do
+        if line:find("^%s*MAP%f[%W]") then
+          return "map"
+        end
+      end
+    end
+  end
+  return "fontmap"
+end
+
 ---@type vim.filetype.mapfn
 ---@nodiscard
 function M.pl(path, bufnr)

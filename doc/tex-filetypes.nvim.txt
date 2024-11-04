@@ -7,13 +7,14 @@ Table of Contents                       *tex-filetypes.nvim-table-of-contents*
 2. Installation                              |tex-filetypes.nvim-installation|
   - With lazy.nvim            |tex-filetypes.nvim-installation-with-lazy.nvim|
   - With mini.deps            |tex-filetypes.nvim-installation-with-mini.deps|
-3. Filetype Plugins                      |tex-filetypes.nvim-filetype-plugins|
-  - tex                              |tex-filetypes.nvim-filetype-plugins-tex|
-  - lua                              |tex-filetypes.nvim-filetype-plugins-lua|
+3. Improvements                              |tex-filetypes.nvim-improvements|
+  - tex                                  |tex-filetypes.nvim-improvements-tex|
+  - lua                                  |tex-filetypes.nvim-improvements-lua|
 4. Extra Filetypes                        |tex-filetypes.nvim-extra-filetypes|
   - bibtoolrsc                 |tex-filetypes.nvim-extra-filetypes-bibtoolrsc|
   - chktexrc                     |tex-filetypes.nvim-extra-filetypes-chktexrc|
   - dependstxt                 |tex-filetypes.nvim-extra-filetypes-dependstxt|
+  - fontmap                       |tex-filetypes.nvim-extra-filetypes-fontmap|
   - propertylist             |tex-filetypes.nvim-extra-filetypes-propertylist|
   - texliveprofile         |tex-filetypes.nvim-extra-filetypes-texliveprofile|
 5. Configuration                            |tex-filetypes.nvim-configuration|
@@ -49,21 +50,21 @@ WITH MINI.DEPS                *tex-filetypes.nvim-installation-with-mini.deps*
 
 
 ==============================================================================
-3. Filetype Plugins                      *tex-filetypes.nvim-filetype-plugins*
+3. Improvements                              *tex-filetypes.nvim-improvements*
 
 
-TEX                                  *tex-filetypes.nvim-filetype-plugins-tex*
+TEX                                      *tex-filetypes.nvim-improvements-tex*
 
-Improved versions of `include` and `includeexpr` are provided.
+- Improved versions of `include` and `includeexpr` are provided.
 
 
-LUA                                  *tex-filetypes.nvim-filetype-plugins-lua*
+LUA                                      *tex-filetypes.nvim-improvements-lua*
 
                                               *tex-filetypes.nvim-b:is_texlua*
 
-The plugin sets `b:is_texlua` to `v:true` if the file is considered to be for
-`texlua`. This can be used to change the behavior only for tex-related lua
-files.
+- The plugin sets `b:is_texlua` to `v:true`
+    if the file is considered to be for `texlua`.
+    This can be used to change the behavior only for tex-related lua files.
 
 
 ==============================================================================
@@ -78,16 +79,16 @@ BIBTOOLRSC                     *tex-filetypes.nvim-extra-filetypes-bibtoolrsc*
 
   Version         `2.68`
 
-  Features        ✅ Syntax  ✅ Indent  ➖ Folding  ✅ Commenting
+  Features        ✅ Syntax  ✅ Indent  ➖ Folding  ✅ Commenting  ➖ Include
 
 
 CHKTEXRC                         *tex-filetypes.nvim-extra-filetypes-chktexrc*
 
-  Language         ChkTeX <https://ctan.org/pkg/chktex> config file
+  Language        ChkTeX <https://ctan.org/pkg/chktex> config file
 
-  Version          `1.7.9`
+  Version         `1.7.9`
 
-  Features         ✅ Syntax  ➖ Indent  ✅ Folding  ✅ Commenting
+  Features        ✅ Syntax  ➖ Indent  ✅ Folding  ✅ Commenting  ➖ Include
 
 
 DEPENDSTXT                     *tex-filetypes.nvim-extra-filetypes-dependstxt*
@@ -95,7 +96,15 @@ DEPENDSTXT                     *tex-filetypes.nvim-extra-filetypes-dependstxt*
   Language        TeX Live’s DEPENDS.txt format
                   <https://tug.org/texlive/pkgcontrib.html#deps>
 
-  Features        ✅ Syntax  ➖ Indent  ✅ Folding  ✅ Commenting
+  Features        ✅ Syntax  ➖ Indent  ✅ Folding  ✅ Commenting  ➖ Include
+
+
+FONTMAP                           *tex-filetypes.nvim-extra-filetypes-fontmap*
+
+  Language        TeX fontmap file
+                  <https://tug.org/fontname/html/Name-mapping-file.html>
+
+  Features        ✅ Syntax  ➖ Indent  ➖ Folding  ✅ Commenting  ✅ Include
 
 
 PROPERTYLIST                 *tex-filetypes.nvim-extra-filetypes-propertylist*
@@ -109,7 +118,7 @@ PROPERTYLIST                 *tex-filetypes.nvim-extra-filetypes-propertylist*
                   - pPLtoTF `p230917`
                     <https://mirrors.ctan.org/info/ptex-manual/jfm.pdf>
 
-  Features        ✅ Syntax  ✅ Indent  ✅ Folding  ✅ Commenting
+  Features        ✅ Syntax  ✅ Indent  ✅ Folding  ✅ Commenting  ➖ Include
 
 
 TEXLIVEPROFILE             *tex-filetypes.nvim-extra-filetypes-texliveprofile*
@@ -119,7 +128,7 @@ TEXLIVEPROFILE             *tex-filetypes.nvim-extra-filetypes-texliveprofile*
 
   Version         `2024`
 
-  Features        ✅ Syntax  ➖ Indent  ➖ Folding  ✅ Commenting
+  Features        ✅ Syntax  ➖ Indent  ➖ Folding  ✅ Commenting  ➖ Include
 
 
 ==============================================================================

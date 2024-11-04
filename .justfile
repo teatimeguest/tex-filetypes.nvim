@@ -40,7 +40,10 @@ test:
 
 [private]
 dprint subcommand *args:
-    dprint --config .config/dprint/dprint.jsonc {{ subcommand }} {{ args }}
+    npx -y \
+      --package @johnnymorganz/stylua-bin \
+      --package dprint \
+      dprint --config .config/dprint/dprint.jsonc {{ subcommand }} {{ args }}
 
 [private]
 llscheck $VIMRUNTIME=`nvim --clean --noplugin -es '+pu=$VIMRUNTIME|pr|q!'`:
