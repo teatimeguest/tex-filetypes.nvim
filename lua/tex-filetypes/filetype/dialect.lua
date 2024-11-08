@@ -20,6 +20,7 @@ function M.is_texlua(target, options)
       vim.endswith(filename, ".luatex")
       or vim.endswith(filename, ".texlua")
       or vim.endswith(filename, ".tlu")
+      or filename:match("/texmf[-/]")
     )
   then
     return true
