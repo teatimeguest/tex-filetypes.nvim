@@ -251,6 +251,12 @@ M.texware = {
   },
 }
 
+M.ttfutils = {
+  extension = {
+    sfd = "subfonts",
+  },
+}
+
 M.web2c = {
   filename = {
     ["texfonts.map"] = "fontmap",

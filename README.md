@@ -49,6 +49,32 @@ add("teatimeguest/tex-filetypes.nvim")
 
 The plugin provides support for the following file formats:
 
+<!-- panvimdoc-ignore-start -->
+
+| Filetype         | Language                                | <sup>[Syntax]<sup> | <sup>[Indent]<sup> | <sup>[Folding]<sup> | <sup>[Commenting]<sup> | <sup>[Include]<sup> |
+| ---------------- | --------------------------------------- | :----------------: | :----------------: | :-----------------: | :--------------------: | :-----------------: |
+| `bibtoolrsc`     | [BibTool] resource file                 | :white_check_mark: | :white_check_mark: | :heavy_minus_sign:  |   :white_check_mark:   | :heavy_minus_sign:  |
+| `chktexrc`       | [ChkTeX] config file                    | :white_check_mark: | :heavy_minus_sign: | :white_check_mark:  |   :white_check_mark:   | :heavy_minus_sign:  |
+| `dependstxt`     | TeX Live's [`DEPENDS.txt`] format       | :white_check_mark: | :heavy_minus_sign: | :white_check_mark:  |   :white_check_mark:   | :heavy_minus_sign:  |
+| `fontmap`        | TeX [fontmap file]                      | :white_check_mark: | :heavy_minus_sign: | :heavy_minus_sign:  |   :white_check_mark:   | :white_check_mark:  |
+| `propertylist`   | [Property list] of TeX font metric data | :white_check_mark: | :white_check_mark: | :white_check_mark:  |   :white_check_mark:   | :heavy_minus_sign:  |
+| `subfonts`       | `ttfutils`' [subfont definition file]   | :white_check_mark: | :heavy_minus_sign: | :heavy_minus_sign:  |   :white_check_mark:   | :heavy_minus_sign:  |
+| `texliveprofile` | TeX Live [installation profile]         | :white_check_mark: | :heavy_minus_sign: | :heavy_minus_sign:  |   :white_check_mark:   | :heavy_minus_sign:  |
+
+[BibTool]: https://ctan.org/pkg/bibtool
+[ChkTeX]: https://ctan.org/pkg/chktex
+[`DEPENDS.txt`]: https://tug.org/texlive/pkgcontrib.html#deps
+[fontmap file]: https://tug.org/fontname/html/Name-mapping-file.html
+[installation profile]: https://www.tug.org/texlive/doc/install-tl.html#PROFILES
+[Property list]: https://mirrors.ctan.org/info/knuth-pdf/texware/pltotf.pdf
+[subfont definition file]: https://www.tug.org/texlive//devsrc/Master/texmf-dist/doc/man/man1/ttf2tfm.man1.pdf
+[Syntax]: https://neovim.io/doc/user/syntax.html#syntax
+[Indent]: https://neovim.io/doc/user/indent.html#indent.txt
+[Folding]: https://neovim.io/doc/user/fold.html#folding
+[Commenting]: https://neovim.io/doc/user/various.html#_3.-commenting
+[Include]: https://neovim.io/doc/user/options.html#'includeexpr'
+
+<!-- panvimdoc-ignore-end -->
 <!-- panvimdoc-include-comment
 
 ## bibtoolrsc
@@ -104,6 +130,17 @@ The plugin provides support for the following file formats:
   Features        ✅ Syntax  ✅ Indent  ✅ Folding  ✅ Commenting  ➖ Include
 ```
 
+## subfonts
+
+```vimdoc
+  Language        `ttfutils`' subfont definition file
+                  <https://www.tug.org/texlive//devsrc/Master/texmf-dist/doc/man/man1/ttf2tfm.man1.pdf>
+
+  Version         `r70015`
+
+  Features        ✅ Syntax  ➖ Indent  ➖ Folding  ✅ Commenting  ➖ Include
+```
+
 ## texliveprofile
 
 ```vimdoc
@@ -116,30 +153,6 @@ The plugin provides support for the following file formats:
 ```
 
 -->
-<!-- panvimdoc-ignore-start -->
-
-| Filetype         | Language                                | <sup>[Syntax]<sup> | <sup>[Indent]<sup> | <sup>[Folding]<sup> | <sup>[Commenting]<sup> | <sup>[Include]<sup> |
-| ---------------- | --------------------------------------- | :----------------: | :----------------: | :-----------------: | :--------------------: | :-----------------: |
-| `bibtoolrsc`     | [BibTool] resource file                 |         ✅         |         ✅         |         ➖          |           ✅           |         ➖          |
-| `chktexrc`       | [ChkTeX] config file                    |         ✅         |         ➖         |         ✅          |           ✅           |         ➖          |
-| `dependstxt`     | TeX Live's [`DEPENDS.txt`] format       |         ✅         |         ➖         |         ✅          |           ✅           |         ➖          |
-| `fontmap`        | TeX [fontmap file]                      |         ✅         |         ➖         |         ➖          |           ✅           |         ✅          |
-| `propertylist`   | [Property list] of TeX font metric data |         ✅         |         ✅         |         ✅          |           ✅           |         ➖          |
-| `texliveprofile` | TeX Live [installation profile]         |         ✅         |         ➖         |         ➖          |           ✅           |         ➖          |
-
-[BibTool]: https://ctan.org/pkg/bibtool
-[ChkTeX]: https://ctan.org/pkg/chktex
-[`DEPENDS.txt`]: https://tug.org/texlive/pkgcontrib.html#deps
-[fontmap file]: https://tug.org/fontname/html/Name-mapping-file.html
-[installation profile]: https://www.tug.org/texlive/doc/install-tl.html#PROFILES
-[Property list]: https://mirrors.ctan.org/info/knuth-pdf/texware/pltotf.pdf
-[Syntax]: https://neovim.io/doc/user/syntax.html#syntax
-[Indent]: https://neovim.io/doc/user/indent.html#indent.txt
-[Folding]: https://neovim.io/doc/user/fold.html#folding
-[Commenting]: https://neovim.io/doc/user/various.html#_3.-commenting
-[Include]: https://neovim.io/doc/user/options.html#'includeexpr'
-
-<!-- panvimdoc-ignore-end -->
 
 ## Configuration
 

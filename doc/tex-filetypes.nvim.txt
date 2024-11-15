@@ -16,6 +16,7 @@ Table of Contents                       *tex-filetypes.nvim-table-of-contents*
   - dependstxt                 |tex-filetypes.nvim-extra-filetypes-dependstxt|
   - fontmap                       |tex-filetypes.nvim-extra-filetypes-fontmap|
   - propertylist             |tex-filetypes.nvim-extra-filetypes-propertylist|
+  - subfonts                     |tex-filetypes.nvim-extra-filetypes-subfonts|
   - texliveprofile         |tex-filetypes.nvim-extra-filetypes-texliveprofile|
 5. Configuration                            |tex-filetypes.nvim-configuration|
 6. License                                        |tex-filetypes.nvim-license|
@@ -119,6 +120,16 @@ PROPERTYLIST                 *tex-filetypes.nvim-extra-filetypes-propertylist*
                     <https://mirrors.ctan.org/info/ptex-manual/jfm.pdf>
 
   Features        ✅ Syntax  ✅ Indent  ✅ Folding  ✅ Commenting  ➖ Include
+
+
+SUBFONTS                         *tex-filetypes.nvim-extra-filetypes-subfonts*
+
+  Language        `ttfutils`' subfont definition file
+                  <https://www.tug.org/texlive//devsrc/Master/texmf-dist/doc/man/man1/ttf2tfm.man1.pdf>
+
+  Version         `r70015`
+
+  Features        ✅ Syntax  ➖ Indent  ➖ Folding  ✅ Commenting  ➖ Include
 
 
 TEXLIVEPROFILE             *tex-filetypes.nvim-extra-filetypes-texliveprofile*
