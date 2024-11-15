@@ -18,6 +18,7 @@ Table of Contents                       *tex-filetypes.nvim-table-of-contents*
   - propertylist             |tex-filetypes.nvim-extra-filetypes-propertylist|
   - subfonts                     |tex-filetypes.nvim-extra-filetypes-subfonts|
   - texliveprofile         |tex-filetypes.nvim-extra-filetypes-texliveprofile|
+  - tlpdb                           |tex-filetypes.nvim-extra-filetypes-tlpdb|
 5. Configuration                            |tex-filetypes.nvim-configuration|
 6. License                                        |tex-filetypes.nvim-license|
 
@@ -80,7 +81,8 @@ BIBTOOLRSC                     *tex-filetypes.nvim-extra-filetypes-bibtoolrsc*
 
   Version         `2.68`
 
-  Features        ✅ Syntax  ✅ Indent  ➖ Folding  ✅ Commenting  ➖ Include
+  Features        ✅ Syntax    ✅ Indent    ➖ Folding   ✅ Commenting
+                  ➖ Include   ➖ Define
 
 
 CHKTEXRC                         *tex-filetypes.nvim-extra-filetypes-chktexrc*
@@ -89,7 +91,8 @@ CHKTEXRC                         *tex-filetypes.nvim-extra-filetypes-chktexrc*
 
   Version         `1.7.9`
 
-  Features        ✅ Syntax  ➖ Indent  ✅ Folding  ✅ Commenting  ➖ Include
+  Features        ✅ Syntax    ➖ Indent    ✅ Folding   ✅ Commenting
+                  ➖ Include   ➖ Define
 
 
 DEPENDSTXT                     *tex-filetypes.nvim-extra-filetypes-dependstxt*
@@ -97,7 +100,8 @@ DEPENDSTXT                     *tex-filetypes.nvim-extra-filetypes-dependstxt*
   Language        TeX Live’s DEPENDS.txt format
                   <https://tug.org/texlive/pkgcontrib.html#deps>
 
-  Features        ✅ Syntax  ➖ Indent  ✅ Folding  ✅ Commenting  ➖ Include
+  Features        ✅ Syntax    ➖ Indent    ✅ Folding   ✅ Commenting
+                  ➖ Include   ➖ Define
 
 
 FONTMAP                           *tex-filetypes.nvim-extra-filetypes-fontmap*
@@ -105,7 +109,8 @@ FONTMAP                           *tex-filetypes.nvim-extra-filetypes-fontmap*
   Language        TeX fontmap file
                   <https://tug.org/fontname/html/Name-mapping-file.html>
 
-  Features        ✅ Syntax  ➖ Indent  ➖ Folding  ✅ Commenting  ✅ Include
+  Features        ✅ Syntax    ➖ Indent    ➖ Folding   ✅ Commenting
+                  ✅ Include   ➖ Define
 
 
 PROPERTYLIST                 *tex-filetypes.nvim-extra-filetypes-propertylist*
@@ -119,7 +124,8 @@ PROPERTYLIST                 *tex-filetypes.nvim-extra-filetypes-propertylist*
                   - pPLtoTF `p230917`
                     <https://mirrors.ctan.org/info/ptex-manual/jfm.pdf>
 
-  Features        ✅ Syntax  ✅ Indent  ✅ Folding  ✅ Commenting  ➖ Include
+  Features        ✅ Syntax    ✅ Indent    ✅ Folding  ✅ Commenting
+                  ➖ Include   ➖ Define
 
 
 SUBFONTS                         *tex-filetypes.nvim-extra-filetypes-subfonts*
@@ -129,7 +135,8 @@ SUBFONTS                         *tex-filetypes.nvim-extra-filetypes-subfonts*
 
   Version         `r70015`
 
-  Features        ✅ Syntax  ➖ Indent  ➖ Folding  ✅ Commenting  ➖ Include
+  Features        ✅ Syntax    ➖ Indent    ➖ Folding   ✅ Commenting
+                  ➖ Include   ➖ Define
 
 
 TEXLIVEPROFILE             *tex-filetypes.nvim-extra-filetypes-texliveprofile*
@@ -139,7 +146,17 @@ TEXLIVEPROFILE             *tex-filetypes.nvim-extra-filetypes-texliveprofile*
 
   Version         `2024`
 
-  Features        ✅ Syntax  ➖ Indent  ➖ Folding  ✅ Commenting  ➖ Include
+  Features        ✅ Syntax    ➖ Indent    ➖ Folding   ✅ Commenting
+                  ➖ Include   ➖ Define
+
+
+TLPDB                               *tex-filetypes.nvim-extra-filetypes-tlpdb*
+
+  Language        TeX Live Database/Object/Source file
+                  <https://www.tug.org/texlive/doc/tlpkgdoc>
+
+  Features        ✅ Syntax    ➖ Indent    ✅ Folding   ✅ Commenting
+                  ➖ Include   ✅ Define
 
 
 ==============================================================================

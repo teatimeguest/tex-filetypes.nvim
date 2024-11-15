@@ -229,15 +229,21 @@ M.tex4ht = {
 }
 
 M.texlive = {
+  extension = {
+    tlpdb = "tlpdb",
+    tlpobj = "tlpdb",
+    tlpsrc = "tlpdb",
+  },
   filename = {
     ["DEPENDS.txt"] = "dependstxt",
     ["texlive.profile"] = "texliveprofile",
     ["installation.profile"] = "texliveprofile",
   },
   pattern = {
-    [".-%.DEPENDS%.txt"] = "dependstxt",
+    [".*/texlive%.tlpdb%.[^/]+"] = "tlpdb",
+    [".*%.DEPENDS%.txt"] = "dependstxt",
     -- `.profile` is also used by `sh`.
-    [".-%.profile"] = { detect.profile, { priority = 10 } },
+    [".*%.profile"] = { detect.profile, { priority = 10 } },
   },
 }
 

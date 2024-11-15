@@ -51,15 +51,16 @@ The plugin provides support for the following file formats:
 
 <!-- panvimdoc-ignore-start -->
 
-| Filetype         | Language                                | <sup>[Syntax]<sup> | <sup>[Indent]<sup> | <sup>[Folding]<sup> | <sup>[Commenting]<sup> | <sup>[Include]<sup> |
-| ---------------- | --------------------------------------- | :----------------: | :----------------: | :-----------------: | :--------------------: | :-----------------: |
-| `bibtoolrsc`     | [BibTool] resource file                 | :white_check_mark: | :white_check_mark: | :heavy_minus_sign:  |   :white_check_mark:   | :heavy_minus_sign:  |
-| `chktexrc`       | [ChkTeX] config file                    | :white_check_mark: | :heavy_minus_sign: | :white_check_mark:  |   :white_check_mark:   | :heavy_minus_sign:  |
-| `dependstxt`     | TeX Live's [`DEPENDS.txt`] format       | :white_check_mark: | :heavy_minus_sign: | :white_check_mark:  |   :white_check_mark:   | :heavy_minus_sign:  |
-| `fontmap`        | TeX [fontmap file]                      | :white_check_mark: | :heavy_minus_sign: | :heavy_minus_sign:  |   :white_check_mark:   | :white_check_mark:  |
-| `propertylist`   | [Property list] of TeX font metric data | :white_check_mark: | :white_check_mark: | :white_check_mark:  |   :white_check_mark:   | :heavy_minus_sign:  |
-| `subfonts`       | `ttfutils`' [subfont definition file]   | :white_check_mark: | :heavy_minus_sign: | :heavy_minus_sign:  |   :white_check_mark:   | :heavy_minus_sign:  |
-| `texliveprofile` | TeX Live [installation profile]         | :white_check_mark: | :heavy_minus_sign: | :heavy_minus_sign:  |   :white_check_mark:   | :heavy_minus_sign:  |
+| Filetype         | Language                                                          | <sup>[Syntax]<sup> | <sup>[Indent]<sup> |  <sup>[Fold]<sup>  | <sup>[Comments]<sup> | <sup>[Include]<sup> | <sup>[Define]</sup> |
+| ---------------- | ----------------------------------------------------------------- | :----------------: | :----------------: | :----------------: | :------------------: | :-----------------: | :-----------------: |
+| `bibtoolrsc`     | [BibTool] resource file                                           | :white_check_mark: | :white_check_mark: | :heavy_minus_sign: |  :white_check_mark:  | :heavy_minus_sign:  | :heavy_minus_sign:  |
+| `chktexrc`       | [ChkTeX] config file                                              | :white_check_mark: | :heavy_minus_sign: | :white_check_mark: |  :white_check_mark:  | :heavy_minus_sign:  | :heavy_minus_sign:  |
+| `dependstxt`     | TeX Live's [`DEPENDS.txt`] format                                 | :white_check_mark: | :heavy_minus_sign: | :white_check_mark: |  :white_check_mark:  | :heavy_minus_sign:  | :heavy_minus_sign:  |
+| `fontmap`        | TeX [fontmap file]                                                | :white_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |  :white_check_mark:  | :white_check_mark:  | :heavy_minus_sign:  |
+| `propertylist`   | [Property list] of TeX font metric data                           | :white_check_mark: | :white_check_mark: | :white_check_mark: |  :white_check_mark:  | :heavy_minus_sign:  | :heavy_minus_sign:  |
+| `subfonts`       | `ttfutils`' [subfont definition file]                             | :white_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |  :white_check_mark:  | :heavy_minus_sign:  | :heavy_minus_sign:  |
+| `texliveprofile` | TeX Live [installation profile]                                   | :white_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |  :white_check_mark:  | :heavy_minus_sign:  | :heavy_minus_sign:  |
+| `tlpdb`          | TeX Live [Database][tlpdb]/[Object][tlpobj]/[Source][tlpsrc] file | :white_check_mark: | :heavy_minus_sign: | :white_check_mark: |  :white_check_mark:  | :heavy_minus_sign:  | :white_check_mark:  |
 
 [BibTool]: https://ctan.org/pkg/bibtool
 [ChkTeX]: https://ctan.org/pkg/chktex
@@ -68,11 +69,15 @@ The plugin provides support for the following file formats:
 [installation profile]: https://www.tug.org/texlive/doc/install-tl.html#PROFILES
 [Property list]: https://mirrors.ctan.org/info/knuth-pdf/texware/pltotf.pdf
 [subfont definition file]: https://www.tug.org/texlive//devsrc/Master/texmf-dist/doc/man/man1/ttf2tfm.man1.pdf
+[tlpdb]: https://www.tug.org/texlive/doc/tlpkgdoc/TLPDB.html
+[tlpobj]: https://www.tug.org/texlive/doc/tlpkgdoc/TLPOBJ.html
+[tlpsrc]: https://www.tug.org/texlive/doc/tlpkgdoc/TLPSRC.html
 [Syntax]: https://neovim.io/doc/user/syntax.html#syntax
 [Indent]: https://neovim.io/doc/user/indent.html#indent.txt
-[Folding]: https://neovim.io/doc/user/fold.html#folding
-[Commenting]: https://neovim.io/doc/user/various.html#_3.-commenting
+[Fold]: https://neovim.io/doc/user/fold.html#folding
+[Comments]: https://neovim.io/doc/user/various.html#_3.-commenting
 [Include]: https://neovim.io/doc/user/options.html#'includeexpr'
+[Define]: https://neovim.io/doc/user/options.html#'define'
 
 <!-- panvimdoc-ignore-end -->
 <!-- panvimdoc-include-comment
@@ -84,7 +89,8 @@ The plugin provides support for the following file formats:
 
   Version         `2.68`
 
-  Features        ✅ Syntax  ✅ Indent  ➖ Folding  ✅ Commenting  ➖ Include
+  Features        ✅ Syntax    ✅ Indent    ➖ Folding   ✅ Commenting
+                  ➖ Include   ➖ Define
 ```
 
 ## chktexrc
@@ -94,7 +100,8 @@ The plugin provides support for the following file formats:
 
   Version         `1.7.9`
 
-  Features        ✅ Syntax  ➖ Indent  ✅ Folding  ✅ Commenting  ➖ Include
+  Features        ✅ Syntax    ➖ Indent    ✅ Folding   ✅ Commenting
+                  ➖ Include   ➖ Define
 ```
 
 ## dependstxt
@@ -103,7 +110,8 @@ The plugin provides support for the following file formats:
   Language        TeX Live’s DEPENDS.txt format
                   <https://tug.org/texlive/pkgcontrib.html#deps>
 
-  Features        ✅ Syntax  ➖ Indent  ✅ Folding  ✅ Commenting  ➖ Include
+  Features        ✅ Syntax    ➖ Indent    ✅ Folding   ✅ Commenting
+                  ➖ Include   ➖ Define
 ```
 
 ## fontmap
@@ -112,7 +120,8 @@ The plugin provides support for the following file formats:
   Language        TeX fontmap file
                   <https://tug.org/fontname/html/Name-mapping-file.html>
 
-  Features        ✅ Syntax  ➖ Indent  ➖ Folding  ✅ Commenting  ✅ Include
+  Features        ✅ Syntax    ➖ Indent    ➖ Folding   ✅ Commenting
+                  ✅ Include   ➖ Define
 ```
 
 ## propertylist
@@ -127,7 +136,8 @@ The plugin provides support for the following file formats:
                   - pPLtoTF `p230917`
                     <https://mirrors.ctan.org/info/ptex-manual/jfm.pdf>
 
-  Features        ✅ Syntax  ✅ Indent  ✅ Folding  ✅ Commenting  ➖ Include
+  Features        ✅ Syntax    ✅ Indent    ✅ Folding  ✅ Commenting
+                  ➖ Include   ➖ Define
 ```
 
 ## subfonts
@@ -138,7 +148,8 @@ The plugin provides support for the following file formats:
 
   Version         `r70015`
 
-  Features        ✅ Syntax  ➖ Indent  ➖ Folding  ✅ Commenting  ➖ Include
+  Features        ✅ Syntax    ➖ Indent    ➖ Folding   ✅ Commenting
+                  ➖ Include   ➖ Define
 ```
 
 ## texliveprofile
@@ -149,7 +160,18 @@ The plugin provides support for the following file formats:
 
   Version         `2024`
 
-  Features        ✅ Syntax  ➖ Indent  ➖ Folding  ✅ Commenting  ➖ Include
+  Features        ✅ Syntax    ➖ Indent    ➖ Folding   ✅ Commenting
+                  ➖ Include   ➖ Define
+```
+
+## tlpdb
+
+```vimdoc
+  Language        TeX Live Database/Object/Source file
+                  <https://www.tug.org/texlive/doc/tlpkgdoc>
+
+  Features        ✅ Syntax    ➖ Indent    ✅ Folding   ✅ Commenting
+                  ➖ Include   ✅ Define
 ```
 
 -->
