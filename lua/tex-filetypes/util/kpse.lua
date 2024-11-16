@@ -30,6 +30,25 @@ local function kpsewhich(options, filenames)
     vim.list_extend(cmd, { "-var-value", options.var_value })
   end
   if filenames and #filenames > 0 then
+    -- Emulates `luatex`'s behavior:
+    -- (https://github.com/TeX-Live/luatex/blob/1.15.0/source/texk/web2c/luatexdir/lua/luainit.c#L646)
+    if options.format == "lua" then
+      filenames = vim
+        .iter(filenames)
+        :map(
+          ---@param name string
+          ---@return string[]
+          function(name)
+            if name:find(".", nil, true) then
+              return { name:gsub([[\.]], "/"), name }
+            else
+              return { name }
+            end
+          end
+        )
+        :flatten()
+        :totable()
+    end
     vim.list_extend(cmd, { "--", unpack(filenames) })
   end
   ---@type vim.SystemObj?

@@ -1,9 +1,21 @@
-if not vim.b.did_ftplugin or vim.b.is_texlua ~= nil then
+if not vim.b.did_ftplugin then
   return
 end
 
-local ft = require("tex-filetypes.filetype")
+local dialect = require("tex-filetypes.filetype.dialect")
 
 local bufnr = vim.api.nvim_get_current_buf()
-vim.b.is_texlua = ft.dialect.is_texlua({ buf = bufnr })
-ft.add_undo_ftplugin(bufnr, "unlet! b:is_texlua")
+
+if vim.b.is_texlua == nil then
+  vim.b.is_texlua = dialect.is_texlua({ buf = bufnr })
+  vim.b.undo_ftplugin =
+    table.concat({ vim.b.undo_ftplugin, "unlet! b:is_texlua" }, " | ")
+end
+
+vim.bo.includeexpr = table.concat({
+  [[v:lua.require'tex-filetypes.include.lua'.includeexpr(v:fname)]],
+  vim.opt.includeexpr:get(),
+}, " ?? ")
+
+vim.b.undo_ftplugin =
+  table.concat({ vim.b.undo_ftplugin, "setlocal includeexpr<" }, " | ")

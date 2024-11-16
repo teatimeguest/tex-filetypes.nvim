@@ -28,35 +28,35 @@ local function use_fixtures(filename)
   return { buf = bufnr, filename = filename }
 end
 
-local ft = require("tex-filetypes.filetype")
+local dialect = require("tex-filetypes.filetype.dialect")
 
-vim.filetype.add(ft.filetypes)
+vim.filetype.add(require("tex-filetypes.filetype").filetypes)
 
 describe("lua", function()
   describe("is_texlua", function()
     it("from extension `.luatex`", function()
-      assert.is_true(ft.dialect.is_texlua({ filename = "example.luatex" }))
+      assert.is_true(dialect.is_texlua({ filename = "example.luatex" }))
     end)
 
     it("from extension `.tlu`", function()
-      assert.is_true(ft.dialect.is_texlua({ filename = "example.tlu" }))
+      assert.is_true(dialect.is_texlua({ filename = "example.tlu" }))
     end)
 
     it("from shebang with `luatex`", function()
-      assert.is_true(ft.dialect.is_texlua({
+      assert.is_true(dialect.is_texlua({
         contents = { "#!/usr/local/texlive/2024/bin/x86_64-linux/luatex" },
       }))
     end)
 
     it("from shebang with `texlua`", function()
       assert.is_true(
-        ft.dialect.is_texlua({ contents = { "#!/usr/bin/env texlua" } })
+        dialect.is_texlua({ contents = { "#!/usr/bin/env texlua" } })
       )
     end)
 
     it("from contents", function()
       assert.is_true(
-        ft.dialect.is_texlua({ contents = { "kpse.set_program_name('lua')" } })
+        dialect.is_texlua({ contents = { "kpse.set_program_name('lua')" } })
       )
     end)
   end)

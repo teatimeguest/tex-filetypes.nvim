@@ -1,7 +1,7 @@
 local M = {}
 
 function M.setup()
-  vim.filetype.add(require("tex-filetypes.filetype").filetypes)
+  require("tex-filetypes.filetype").setup()
 end
 
 return M

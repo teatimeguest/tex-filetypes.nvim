@@ -71,23 +71,13 @@ M.biblatex = {
 ---@class tex_filetypes.include.tex.Commands
 M.pgf = {
   usegdlibrary = {
-    pattern = function(name)
-      return vim
-        .iter({ "pgf.gd.%s.library", "pgf.gd.%s", "%s.library", "%s" })
-        :map(
-          ---@param pat string
-          ---@return string[]
-          function(pat)
-            -- https://github.com/TeX-Live/luatex/blob/1.15.0/source/texk/web2c/luatexdir/lua/luainit.c#L646
-            local lua = pat:format(name)
-            return { lua:gsub([[\.]], "/"), lua }
-          end
-        )
-        :flatten()
-        :totable()
-    end,
+    pattern = { "pgf.gd.%s.library", "pgf.gd.%s", "%s.library", "%s" },
     progname = "luatex",
     format = "lua",
+    list = true,
+  },
+  usepgflibrary = {
+    pattern = { "pgflibrary%s.code.tex" },
     list = true,
   },
   usetikzlibrary = {

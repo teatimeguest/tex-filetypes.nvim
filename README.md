@@ -8,8 +8,12 @@
 
 ## Features
 
-- Improved support for existing filetypes, especially `tex`.
+- Improved support for existing filetypes, especially `tex` and `lua`.
 - Additional filetypes for several TeX-related file formats.
+
+## Requirements
+
+- Neovim `>= 0.10.0`
 
 ## Installation
 
@@ -33,7 +37,8 @@ add("teatimeguest/tex-filetypes.nvim")
 
 ### `tex`
 
-- Improved versions of `include` and `includeexpr` are provided.
+- Improve `include` and `includeexpr`, using `kpsewhich`.
+- Add more match patterns for `matchit`.
 
 ### `lua`
 
@@ -41,9 +46,8 @@ add("teatimeguest/tex-filetypes.nvim")
                                               *tex-filetypes.nvim-b:is_texlua*
 ``` -->
 
-- The plugin sets `b:is_texlua` to `v:true`
-  if the file is considered to be for `texlua`.
-  This can be used to change the behavior only for tex-related lua files.
+- Add support for lua files from TeX distribution to `includeexpr`.
+- Set `b:is_texlua` to `v:true` for TeX-related lua files.
 
 ## Extra Filetypes
 

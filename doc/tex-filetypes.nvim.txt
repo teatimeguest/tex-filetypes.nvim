@@ -4,13 +4,14 @@
 Table of Contents                       *tex-filetypes.nvim-table-of-contents*
 
 1. Features                                      |tex-filetypes.nvim-features|
-2. Installation                              |tex-filetypes.nvim-installation|
+2. Requirements                              |tex-filetypes.nvim-requirements|
+3. Installation                              |tex-filetypes.nvim-installation|
   - With lazy.nvim            |tex-filetypes.nvim-installation-with-lazy.nvim|
   - With mini.deps            |tex-filetypes.nvim-installation-with-mini.deps|
-3. Improvements                              |tex-filetypes.nvim-improvements|
+4. Improvements                              |tex-filetypes.nvim-improvements|
   - tex                                  |tex-filetypes.nvim-improvements-tex|
   - lua                                  |tex-filetypes.nvim-improvements-lua|
-4. Extra Filetypes                        |tex-filetypes.nvim-extra-filetypes|
+5. Extra Filetypes                        |tex-filetypes.nvim-extra-filetypes|
   - bibtoolrsc                 |tex-filetypes.nvim-extra-filetypes-bibtoolrsc|
   - chktexrc                     |tex-filetypes.nvim-extra-filetypes-chktexrc|
   - dependstxt                 |tex-filetypes.nvim-extra-filetypes-dependstxt|
@@ -19,18 +20,24 @@ Table of Contents                       *tex-filetypes.nvim-table-of-contents*
   - subfonts                     |tex-filetypes.nvim-extra-filetypes-subfonts|
   - texliveprofile         |tex-filetypes.nvim-extra-filetypes-texliveprofile|
   - tlpdb                           |tex-filetypes.nvim-extra-filetypes-tlpdb|
-5. Configuration                            |tex-filetypes.nvim-configuration|
-6. License                                        |tex-filetypes.nvim-license|
+6. Configuration                            |tex-filetypes.nvim-configuration|
+7. License                                        |tex-filetypes.nvim-license|
 
 ==============================================================================
 1. Features                                      *tex-filetypes.nvim-features*
 
-- Improved support for existing filetypes, especially `tex`.
+- Improved support for existing filetypes, especially `tex` and `lua`.
 - Additional filetypes for several TeX-related file formats.
 
 
 ==============================================================================
-2. Installation                              *tex-filetypes.nvim-installation*
+2. Requirements                              *tex-filetypes.nvim-requirements*
+
+- Neovim `>= 0.10.0`
+
+
+==============================================================================
+3. Installation                              *tex-filetypes.nvim-installation*
 
 
 WITH LAZY.NVIM                *tex-filetypes.nvim-installation-with-lazy.nvim*
@@ -52,25 +59,25 @@ WITH MINI.DEPS                *tex-filetypes.nvim-installation-with-mini.deps*
 
 
 ==============================================================================
-3. Improvements                              *tex-filetypes.nvim-improvements*
+4. Improvements                              *tex-filetypes.nvim-improvements*
 
 
 TEX                                      *tex-filetypes.nvim-improvements-tex*
 
-- Improved versions of `include` and `includeexpr` are provided.
+- Improve `include` and `includeexpr`, using `kpsewhich`.
+- Add more match patterns for `matchit`.
 
 
 LUA                                      *tex-filetypes.nvim-improvements-lua*
 
                                               *tex-filetypes.nvim-b:is_texlua*
 
-- The plugin sets `b:is_texlua` to `v:true`
-    if the file is considered to be for `texlua`.
-    This can be used to change the behavior only for tex-related lua files.
+- Add support for lua files from TeX distribution to `includeexpr`.
+- Set `b:is_texlua` to `v:true` for TeX-related lua files.
 
 
 ==============================================================================
-4. Extra Filetypes                        *tex-filetypes.nvim-extra-filetypes*
+5. Extra Filetypes                        *tex-filetypes.nvim-extra-filetypes*
 
 The plugin provides support for the following file formats:
 
@@ -160,7 +167,7 @@ TLPDB                               *tex-filetypes.nvim-extra-filetypes-tlpdb*
 
 
 ==============================================================================
-5. Configuration                            *tex-filetypes.nvim-configuration*
+6. Configuration                            *tex-filetypes.nvim-configuration*
 
 The plugin respects the |filetype-overrule| and |filetype-ignore| global
 config. In particular, the following variables affect filetype detection:
@@ -172,7 +179,7 @@ config. In particular, the following variables affect filetype detection:
 
 
 ==============================================================================
-6. License                                        *tex-filetypes.nvim-license*
+7. License                                        *tex-filetypes.nvim-license*
 
 MIT License
 <https://github.com/teatimeguest/tex-filetypes.nvim/blob/main/LICENSE>
