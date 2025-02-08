@@ -74,17 +74,18 @@ function M.get_item_under_cursor(fname, cursor)
 end
 
 ---Default `includeexpr`, using `kpsewhich`.
----@param fname string
+---@param fname? string
 ---@param options? tex_filetypes.includeexpr.Options
 ---@return string?
 ---@nodiscard
 function M.includeexpr(fname, options)
+  fname = fname or vim.v.fname
   options = vim.tbl_extend(
     "force",
     { timeout_ms = M.DEFAULT_TIMEOUT_MS },
     options or {}
   )
-  return kpse.lookup({ fname }, options)()
+  return fname and kpse.lookup({ fname }, options)()
 end
 
 return M

@@ -61,20 +61,22 @@ function M.resolve(name, options)
   }, options or {})
   local winnr = 0
   local cursor = vim.api.nvim_win_get_cursor(winnr)
-  local command = include.get_include_directive(RE, cursor, options.max_lines)
-  if not command then
-    return iter.empty()
-  end
-  local config = COMMANDS[command:sub(2)] --[[ Trim `\` ]]
   ---@type string[]
   local filenames = {}
-  if config.list then
-    local item = include.get_item_under_cursor(name, cursor)
-    if item then
-      filenames = get_filenames(item, config)
+  local command = include.get_include_directive(RE, cursor, options.max_lines)
+  command = command and command:sub(2) --[[ Trim `\` ]]
+  local config = command and COMMANDS[command] or {}
+  if not command then
+    filenames = { name }
+  else
+    if config.list then
+      local item = include.get_item_under_cursor(name, cursor)
+      if item then
+        filenames = get_filenames(item, config)
+      end
     end
+    vim.list_extend(filenames, get_filenames(name, config))
   end
-  vim.list_extend(filenames, get_filenames(name, config))
   return kpse.lookup(
     filenames,
     vim.tbl_extend("keep", {
@@ -84,12 +86,13 @@ function M.resolve(name, options)
   )
 end
 
----@param fname string
----@param options tex_filetypes.includeexpr.Options
+---@param fname? string
+---@param options? tex_filetypes.includeexpr.Options
 ---@return string?
 ---@nodiscard
 function M.includeexpr(fname, options)
-  return M.resolve(fname, options)()
+  fname = fname or vim.v.fname
+  return fname and M.resolve(fname, options)()
 end
 
 return M

@@ -25,6 +25,8 @@ local function kpsewhich(options, filenames)
   end
   if options.progname then
     vim.list_extend(cmd, { "-progname", options.progname })
+  elseif options.format == "lua" then
+    vim.list_extend(cmd, { "-progname", "luatex" })
   end
   if options.var_value then
     vim.list_extend(cmd, { "-var-value", options.var_value })

@@ -17,13 +17,13 @@ function M.resolve(fname, options)
   return kpse.lookup({ fname }, options)
 end
 
----@param fname string
+---@param fname? string
 ---@param options? tex_filetypes.includeexpr.Options
 ---@return string?
 ---@nodiscard
 function M.includeexpr(fname, options)
-  local bufnr = vim.api.nvim_get_current_buf()
-  if dialect.is_texlua({ buf = bufnr }) then
+  fname = fname or vim.v.fname
+  if fname and dialect.is_texlua({ buf = 0 }) then
     return M.resolve(fname, options)()
   end
 end

@@ -10,7 +10,7 @@ vim.bo.define = [[\%([^\\]\r\?\n\|\%^\)name\>]]
 vim.api.nvim_set_option_value("foldmethod", "expr", { scope = "local" })
 vim.api.nvim_set_option_value(
   "foldexpr",
-  [[v:lua.require'tex-filetypes.fold.tlpdb'.foldexpr(v:lnum)]],
+  [[v:lua.require'tex-filetypes'.foldexpr.tlpdb()]],
   { scope = "local" }
 )
 

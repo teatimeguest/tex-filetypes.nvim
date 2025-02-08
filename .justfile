@@ -40,9 +40,10 @@ test:
 
 [private]
 dprint subcommand *args:
-    npx -y \
-      --package @johnnymorganz/stylua-bin \
+    pnpm \
+      --package @johnnymorganz/stylua-bin@0.20.0 \
       --package dprint \
+      dlx \
       dprint --config .config/dprint/dprint.jsonc {{ subcommand }} {{ args }}
 
 [private]

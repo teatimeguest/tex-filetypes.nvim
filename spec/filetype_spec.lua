@@ -28,9 +28,10 @@ local function use_fixtures(filename)
   return { buf = bufnr, filename = filename }
 end
 
-local dialect = require("tex-filetypes.filetype.dialect")
+local tex_filetypes = require("tex-filetypes")
+local dialect = tex_filetypes.dialect
 
-vim.filetype.add(require("tex-filetypes.filetype").filetypes)
+vim.filetype.add(tex_filetypes.filetypes)
 
 describe("lua", function()
   describe("is_texlua", function()

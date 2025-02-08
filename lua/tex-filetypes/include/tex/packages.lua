@@ -78,7 +78,6 @@ M.biblatex = {
 M.pgf = {
   usegdlibrary = {
     pattern = { "pgf.gd.%s.library", "pgf.gd.%s", "%s.library", "%s" },
-    progname = "luatex",
     format = "lua",
     list = true,
   },

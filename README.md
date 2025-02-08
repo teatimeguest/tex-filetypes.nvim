@@ -54,17 +54,18 @@ add("teatimeguest/tex-filetypes.nvim")
 The plugin provides support for the following file formats:
 
 <!-- panvimdoc-ignore-start -->
+<!-- &#x200B; U+200B ZERO WIDTH SPACE -->
 
-| Filetype         | Language                                                          | <sup>[Syntax]<sup> | <sup>[Indent]<sup> |  <sup>[Fold]<sup>  | <sup>[Comments]<sup> | <sup>[Include]<sup> | <sup>[Define]</sup> |
-| ---------------- | ----------------------------------------------------------------- | :----------------: | :----------------: | :----------------: | :------------------: | :-----------------: | :-----------------: |
-| `bibtoolrsc`     | [BibTool] resource file                                           | :white_check_mark: | :white_check_mark: | :heavy_minus_sign: |  :white_check_mark:  | :heavy_minus_sign:  | :heavy_minus_sign:  |
-| `chktexrc`       | [ChkTeX] config file                                              | :white_check_mark: | :heavy_minus_sign: | :white_check_mark: |  :white_check_mark:  | :heavy_minus_sign:  | :heavy_minus_sign:  |
-| `dependstxt`     | TeX Live's [`DEPENDS.txt`] format                                 | :white_check_mark: | :heavy_minus_sign: | :white_check_mark: |  :white_check_mark:  | :heavy_minus_sign:  | :heavy_minus_sign:  |
-| `fontmap`        | TeX [fontmap file]                                                | :white_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |  :white_check_mark:  | :white_check_mark:  | :heavy_minus_sign:  |
-| `propertylist`   | [Property list] of TeX font metric data                           | :white_check_mark: | :white_check_mark: | :white_check_mark: |  :white_check_mark:  | :heavy_minus_sign:  | :heavy_minus_sign:  |
-| `subfonts`       | `ttfutils`' [subfont definition file]                             | :white_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |  :white_check_mark:  | :heavy_minus_sign:  | :heavy_minus_sign:  |
-| `texliveprofile` | TeX Live [installation profile]                                   | :white_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |  :white_check_mark:  | :heavy_minus_sign:  | :heavy_minus_sign:  |
-| `tlpdb`          | TeX Live [Database][tlpdb]/[Object][tlpobj]/[Source][tlpsrc] file | :white_check_mark: | :heavy_minus_sign: | :white_check_mark: |  :white_check_mark:  | :heavy_minus_sign:  | :white_check_mark:  |
+| Filetype         | Language                                                                          | <sup>[Syntax]<sup> | <sup>[Indent]<sup> |  <sup>[Fold]<sup>  | <sup>[Comments]<sup> | <sup>[Include]<sup> | <sup>[Define]</sup> |
+| ---------------- | --------------------------------------------------------------------------------- | :----------------: | :----------------: | :----------------: | :------------------: | :-----------------: | :-----------------: |
+| `bibtoolrsc`     | [BibTool] resource file                                                           | :white_check_mark: | :white_check_mark: | :heavy_minus_sign: |  :white_check_mark:  | :heavy_minus_sign:  | :heavy_minus_sign:  |
+| `chktexrc`       | [ChkTeX] config file                                                              | :white_check_mark: | :heavy_minus_sign: | :white_check_mark: |  :white_check_mark:  | :heavy_minus_sign:  | :heavy_minus_sign:  |
+| `dependstxt`     | TeX Live's [`DEPENDS.txt`] format                                                 | :white_check_mark: | :heavy_minus_sign: | :white_check_mark: |  :white_check_mark:  | :heavy_minus_sign:  | :heavy_minus_sign:  |
+| `fontmap`        | TeX [fontmap file]                                                                | :white_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |  :white_check_mark:  | :white_check_mark:  | :heavy_minus_sign:  |
+| `propertylist`   | [Property list] of TeX font metric data                                           | :white_check_mark: | :white_check_mark: | :white_check_mark: |  :white_check_mark:  | :heavy_minus_sign:  | :heavy_minus_sign:  |
+| `subfonts`       | `ttfutils`' [subfont definition file]                                             | :white_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |  :white_check_mark:  | :heavy_minus_sign:  | :heavy_minus_sign:  |
+| `texliveprofile` | TeX Live [installation profile]                                                   | :white_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |  :white_check_mark:  | :heavy_minus_sign:  | :heavy_minus_sign:  |
+| `tlpdb`          | TeX Live [Database][tlpdb]/&#x200B;[Object][tlpobj]/&#x200B;[Source][tlpsrc] file | :white_check_mark: | :heavy_minus_sign: | :white_check_mark: |  :white_check_mark:  | :heavy_minus_sign:  | :white_check_mark:  |
 
 [BibTool]: https://ctan.org/pkg/bibtool
 [ChkTeX]: https://ctan.org/pkg/chktex
