@@ -4,6 +4,9 @@ local detect = require("tex-filetypes.filetype.detect")
 local M = {}
 
 M._ = {
+  extension = {
+    pfb = "postscr",
+  },
   pattern = {
     [".-%.def"] = { detect.def, { priority = 10 } },
     [".-%.cfg"] = { detect.cfg, { priority = 10 } },
