@@ -11,11 +11,24 @@ local COMMANDS = vim
     return vim.tbl_extend("error", patterns, value)
   end)
 
+setmetatable(COMMANDS, {
+  __index = function(self, key)
+    for _, suffix in ipairs({ "TF", "T", "F" }) do
+      if vim.endswith(key, suffix) then
+        local value = rawget(self, key:sub(1, -#suffix - 1))
+        if value then
+          return value
+        end
+      end
+    end
+  end,
+})
+
 M.include = [[\\\%(]]
   .. vim
     .iter(vim.spairs(COMMANDS))
-    :map(function(key)
-      return key
+    :map(function(key, value)
+      return key .. (value.TF and [[T\?F\?]] or "")
     end)
     :join([[\|]])
   .. [[\)\>]]
