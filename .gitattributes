@@ -1,3 +1,4 @@
 * text=auto
 .busted linguist-language=lua
+.luacov linguist-language=lua
 /doc/*.txt -merge linguist-generated

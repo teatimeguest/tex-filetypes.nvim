@@ -1,0 +1,9 @@
+return {
+  tick = true,
+  include = {
+    "./lua",
+  },
+  includeuntestedfiles = true,
+  statsfile = "coverage/luacov.stats.out",
+  reportfile = "coverage/luacov.report.out",
+}

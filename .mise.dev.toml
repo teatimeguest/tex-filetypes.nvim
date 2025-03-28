@@ -1,0 +1,114 @@
+min_version = '2025.3.10'
+
+[env]
+_.path = ['{{ config_root }}/.luarocks/bin']
+CLICOLOR_FORCE = '1'
+LUAROCKS_CONFIG = '/dev/null'
+VIM = ''
+
+[tasks.check]
+description = 'Show diagnostic report'
+run = '''
+export VIMRUNTIME=$(nvim -u NONE -i NONE -es '+pu=$VIMRUNTIME|p|q!')
+llscheck --checklevel Hint --configpath .config/luarc.json
+'''
+
+[tasks.doc]
+description = 'Generate Vim help file'
+env.PROJECT_NAME = '{{ config_root | basename }}'
+env.DESCRIPTION = "{{ exec(command=`sed -n 's/^> //;T;p;q' README.md`) }}"
+env.DOC_MAPPING = 'true'
+env.SHIFT_HEADING_LEVEL_BY = '-1'
+run = 'mise run panvimdoc run --rm panvimdoc --input-file README.md'
+sources = ['README.md']
+outputs = ['doc/*.txt']
+
+[tasks.fmt]
+description = 'Format source files'
+depends = ['dprint fmt']
+
+[tasks.fmt-check]
+description = "Check format"
+depends = ['dprint check']
+run = 'editorconfig-checker'
+
+[tasks.install]
+description = 'Install dev dependencies'
+alias = 'i'
+run = '''
+xargs -I{} luarocks install {} << 'EOF'
+busted
+busted-htest
+cluacov
+llscheck
+luacov-console
+nlua
+EOF
+'''
+
+[tasks.lint]
+description = 'Run linters'
+run = [
+  'selene . --config .config/selene.toml',
+  'vint -cs --enable-neovim .',
+]
+
+[tasks.prepare]
+description = 'Setup luarocks locally'
+run = 'hererocks -j2.1 -rlatest .luarocks'
+depends_post = ['install']
+
+[tasks.test]
+description = 'Run unit tests'
+alias = 't'
+run = [
+  'mkdir -p coverage',
+  'eval $(luarocks path --no-bin) && busted -r tests',
+  'luacov-console',
+  'luacov-console -s',
+]
+
+[tasks.dprint]
+hide = true
+run = 'dprint --config .config/dprint/dprint.jsonc'
+
+[tasks.panvimdoc]
+hide = true
+run = '''
+#!/usr/bin/env -S docker compose -f
+services:
+  panvimdoc:
+    platform: linux/amd64
+    image: panvimdoc:{{ vars.panvimdoc_version }}
+    build:
+      context: >-
+        https://github.com/kdheepak/panvimdoc.git#{{ vars.panvimdoc_version }}
+    network_mode: none
+    read_only: true
+    environment:
+      - PROJECT_NAME
+      - DESCRIPTION
+      - INPUT_FILE
+      - DOC_MAPPING
+      - SHIFT_HEADING_LEVEL_BY
+    volumes:
+      - {{ config_root }}:/data
+'''
+
+[vars]
+panvimdoc_version = 'v4.0.1'
+
+[tools]
+'aqua:dprint' = 'latest'
+'aqua:editorconfig-checker' = 'latest'
+'aqua:JohnnyMorganz/StyLua' = 'latest'
+'aqua:Kampfkarren/selene' = 'latest'
+'aqua:LuaLS/lua-language-server' = '3.13'
+'aqua:astral-sh/uv' = 'latest'
+'aqua:neovim/neovim' = '0.11'
+'pipx:vim-vint' = { version = '0.3.21', uvx_args = '--with setuptools' }
+'pipx:luarocks/hererocks' = '0.25.1'
+
+[settings]
+color = true
+experimental = true

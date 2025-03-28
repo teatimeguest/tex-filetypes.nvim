@@ -7,6 +7,8 @@ return {
     verbose = true,
   },
   tests = {
+    output = "htest",
+    coverage = true,
     verbose = true,
   },
 }
